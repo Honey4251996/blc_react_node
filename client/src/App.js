@@ -43,7 +43,7 @@ function App() {
     <Container>
       <Row className="justify-content-md-center">
         <Col md="auto">
-          <h1>Free Broken Link Checker</h1>
+          <h1>Broken Link Checker</h1>
         </Col>
       </Row>
       <Row>
