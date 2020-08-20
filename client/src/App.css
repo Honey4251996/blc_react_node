@@ -13,3 +13,12 @@
     transform: rotate(360deg);
   }
 }
+
+.output {
+  height: 560px;
+  overflow: auto;
+  background: black;
+  color: white;
+  padding: 1em;
+  margin: 1em;
+}

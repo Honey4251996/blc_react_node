@@ -21,7 +21,7 @@ module.exports = {
             var urlChecker = new blc.UrlChecker(options, {
                 link: function (result, customData) {
                     if (result.broken) {
-                        brokenLinks.push(result.url.original);
+                        brokenLinks.push('|----broken link---- ' + result.url.original);
                         console.log('single page broken link ===> ', result.url.original);
                     }
                 },
@@ -43,14 +43,14 @@ module.exports = {
                 html: function (tree, robots, response, pageUrl, customData) { },
                 junk: function (result, customData) {
                     if (result.broken && blc[result.brokenReason] === "Not Found (404)") {
-                        brokenLinks.push(result.url.original);
+                        brokenLinks.push('|----broken link---- ' + result.url.original);
                         console.log("website junk >> broken link: " + result.url.original)
                     }
                 },
                 link: function (result, customData) {
                     if (result.broken && blc[result.brokenReason] === "Not Found (404)") {
+                        brokenLinks.push('|----broken link---- ' + result.url.original);
                         console.log("website link >> broken link: " + result.url.original)
-                        brokenLinks.push(result.url.original);
                     }
                 },
                 page: function (error, pageUrl, customData) { },
