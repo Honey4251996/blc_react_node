@@ -2,21 +2,28 @@
 
 ## Prepare
 
-### Backend Preparing
+### Backend
 
 $ cd server
 $ npm install
+
+### Client
+
+$ cd client
+$ npm install
+
+## Run
+
+### Backend
 $ npm run start
 
 Then server is running on port 9000.
 You can confirm by localhost:9000/api
 
-### Client Preparing
-
-$ cd client
-$ npm install
+### Client
 $ npm start
 
 Then the project will be running in localhost:3000
 
 That's all!
+Thank you :)
