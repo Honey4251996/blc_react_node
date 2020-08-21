@@ -26,6 +26,9 @@ module.exports = {
                     }
                 },
                 end: function () {
+                    if (!brokenLinks.length) {
+                        brokenLinks.push('|----No broken link');
+                    }
                     resolve(brokenLinks);
                     console.log("--------- Single Page Checking is Completed -----------");
                 }
@@ -57,6 +60,9 @@ module.exports = {
                 site: function (error, siteUrl, customData) { },
                 end: function () {
                     console.log("--------- Website checking is Completed -----------");
+                    if (!brokenLinks.length) {
+                        brokenLinks.push('|----No broken link');
+                    }
                     resolve(brokenLinks);
                 }
             });
