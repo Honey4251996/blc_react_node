@@ -20,7 +20,8 @@ module.exports = {
         return await new Promise((resolve, reject) => {
             var urlChecker = new blc.UrlChecker(options, {
                 link: function (result, customData) {
-                    if (result.broken) {
+                    if (result.broken && blc[result.brokenReason] === "Not Found (404)"
+                        || result.broken && blc[result.brokenReason] === "BLC_INVALID") {
                         brokenLinks.push('|----broken link---- ' + result.url.original);
                         console.log('single page broken link ===> ', result.url.original);
                     }
@@ -45,13 +46,15 @@ module.exports = {
                 robots: function (robots, customData) { },
                 html: function (tree, robots, response, pageUrl, customData) { },
                 junk: function (result, customData) {
-                    if (result.broken && blc[result.brokenReason] === "Not Found (404)") {
+                    if (result.broken && blc[result.brokenReason] === "Not Found (404)"
+                        || result.broken && blc[result.brokenReason] === "BLC_INVALID") {
                         brokenLinks.push('|----broken link---- ' + result.url.original);
                         console.log("website junk >> broken link: " + result.url.original)
                     }
                 },
                 link: function (result, customData) {
-                    if (result.broken && blc[result.brokenReason] === "Not Found (404)") {
+                    if (result.broken && blc[result.brokenReason] === "Not Found (404)"
+                        || result.broken && blc[result.brokenReason] === "BLC_INVALID") {
                         brokenLinks.push('|----broken link---- ' + result.url.original);
                         console.log("website link >> broken link: " + result.url.original)
                     }
