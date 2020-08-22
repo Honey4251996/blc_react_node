@@ -20,8 +20,9 @@ module.exports = {
         return await new Promise((resolve, reject) => {
             var urlChecker = new blc.UrlChecker(options, {
                 link: function (result, customData) {
-                    if (result.broken && blc[result.brokenReason] === "Not Found (404)"
-                        || result.broken && blc[result.brokenReason] === "BLC_INVALID") {
+                    // if (result.broken && blc[result.brokenReason] === "Not Found (404)"
+                    //     || result.broken && blc[result.brokenReason] === "BLC_INVALID") {
+                    if (result.broken) {
                         brokenLinks.push('|----broken link---- ' + result.url.original + ' (' + blc[result.brokenReason] + ')');
                         console.log('single page broken link ===> ', result.url.original, blc[result.brokenReason]);
                     }
@@ -49,16 +50,17 @@ module.exports = {
                     // if (result.broken && blc[result.brokenReason] === "Not Found (404)"
                     //     || result.broken && blc[result.brokenReason] === "BLC_INVALID") {
                     if (result.broken) {
-                        brokenLinks.push('|----broken link---- ' + result.url.original + ' (' + blc[result.brokenReason] + ')');
-                        console.log('website broken link ===> ', result.url.original, blc[result.brokenReason]);
+                        brokenLinks.push('|----broken link---- ' + result.url.original + ' (' + result.brokenReason + ')');
+                        console.log('website broken link ===> ', result.url.original, result.brokenReason);
+                        // console.log('website broken link ===> ', result.url.original, blc[result.brokenReason]);
                     }
                 },
                 link: function (result, customData) {
                     // if (result.broken && blc[result.brokenReason] === "Not Found (404)"
                     //     || result.broken && blc[result.brokenReason] === "BLC_INVALID") {
                     if (result.broken) {
-                        brokenLinks.push('|----broken link---- ' + result.url.original + ' (' + blc[result.brokenReason] + ')');
-                        console.log('website broken link ===> ', result.url.original, blc[result.brokenReason]);
+                        brokenLinks.push('|----broken link---- ' + result.url.original + ' (' + result.brokenReason + ')');
+                        console.log('website broken link ===> ', result.url.original, result.brokenReason);
                     }
                 },
                 page: function (error, pageUrl, customData) { },
