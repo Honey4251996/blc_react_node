@@ -22,8 +22,8 @@ module.exports = {
                 link: function (result, customData) {
                     if (result.broken && blc[result.brokenReason] === "Not Found (404)"
                         || result.broken && blc[result.brokenReason] === "BLC_INVALID") {
-                        brokenLinks.push('|----broken link---- ' + result.url.original);
-                        console.log('single page broken link ===> ', result.url.original);
+                        brokenLinks.push('|----broken link---- ' + result.url.original + ' (' + blc[result.brokenReason] + ')');
+                        console.log('single page broken link ===> ', result.url.original, blc[result.brokenReason]);
                     }
                 },
                 end: function () {
@@ -46,17 +46,19 @@ module.exports = {
                 robots: function (robots, customData) { },
                 html: function (tree, robots, response, pageUrl, customData) { },
                 junk: function (result, customData) {
-                    if (result.broken && blc[result.brokenReason] === "Not Found (404)"
-                        || result.broken && blc[result.brokenReason] === "BLC_INVALID") {
-                        brokenLinks.push('|----broken link---- ' + result.url.original);
-                        console.log("website junk >> broken link: " + result.url.original)
+                    // if (result.broken && blc[result.brokenReason] === "Not Found (404)"
+                    //     || result.broken && blc[result.brokenReason] === "BLC_INVALID") {
+                    if (result.broken) {
+                        brokenLinks.push('|----broken link---- ' + result.url.original + ' (' + blc[result.brokenReason] + ')');
+                        console.log('website broken link ===> ', result.url.original, blc[result.brokenReason]);
                     }
                 },
                 link: function (result, customData) {
-                    if (result.broken && blc[result.brokenReason] === "Not Found (404)"
-                        || result.broken && blc[result.brokenReason] === "BLC_INVALID") {
-                        brokenLinks.push('|----broken link---- ' + result.url.original);
-                        console.log("website link >> broken link: " + result.url.original)
+                    // if (result.broken && blc[result.brokenReason] === "Not Found (404)"
+                    //     || result.broken && blc[result.brokenReason] === "BLC_INVALID") {
+                    if (result.broken) {
+                        brokenLinks.push('|----broken link---- ' + result.url.original + ' (' + blc[result.brokenReason] + ')');
+                        console.log('website broken link ===> ', result.url.original, blc[result.brokenReason]);
                     }
                 },
                 page: function (error, pageUrl, customData) { },
